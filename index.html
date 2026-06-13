@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Althea Karyl P. Lengga — UI/UX Designer & Front-End Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  :root {
+    --ink: #1a1a18;
+    --muted: #6b6b66;
+    --faint: #c8c8c2;
+    --accent: #c0392b;
+    --bg: #f7f6f2;
+    --card: #ffffff;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+ 
+  html { font-size: 16px; scroll-behavior: smooth; }
+ 
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+ 
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+ 
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    animation: fadeUp 0.7s ease both;
+  }
+ 
+  /* ── HEADER ── */
+  header {
+    padding-bottom: 2.5rem;
+    border-bottom: 1.5px solid var(--ink);
+    margin-bottom: 2.5rem;
+  }
+ 
+  .name {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+  }
+ 
+  .title-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+ 
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+ 
+  .contact a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact a:hover { color: var(--accent); }
+ 
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 2.8rem;
+    animation: fadeUp 0.7s ease both;
+  }
+ 
+  section:nth-child(2)  { animation-delay: 0.08s; }
+  section:nth-child(3)  { animation-delay: 0.13s; }
+  section:nth-child(4)  { animation-delay: 0.18s; }
+  section:nth-child(5)  { animation-delay: 0.23s; }
+  section:nth-child(6)  { animation-delay: 0.28s; }
+  section:nth-child(7)  { animation-delay: 0.33s; }
+ 
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid var(--faint);
+  }
+ 
+  /* ── SUMMARY ── */
+  .summary p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 660px;
+    color: #3a3a36;
+  }
+ 
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+ 
+  .skill-group {}
+  .skill-group-name {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.55rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border: 0.5px solid var(--faint);
+    border-radius: 2px;
+    color: var(--ink);
+    background: var(--card);
+    letter-spacing: 0.01em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tag:hover { border-color: var(--ink); }
+ 
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+ 
+  .exp-item {}
+ 
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.15rem;
+  }
+ 
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+ 
+  .exp-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 400;
+  }
+ 
+  .exp-company {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.55rem;
+    font-style: italic;
+  }
+ 
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+ 
+  .exp-bullets li {
+    font-size: 0.85rem;
+    padding-left: 1.1rem;
+    position: relative;
+    color: #3a3a36;
+    line-height: 1.65;
+  }
+ 
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--faint);
+    font-size: 0.8rem;
+    top: 0.05rem;
+  }
+ 
+  /* ── BOTTOM GRID ── */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+ 
+  @media (max-width: 540px) {
+    .bottom-grid { grid-template-columns: 1fr; }
+  }
+ 
+  .sub-section { margin-bottom: 1.6rem; }
+ 
+  .sub-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 0.5px solid var(--faint);
+  }
+ 
+  .edu-item { margin-bottom: 0.9rem; }
+  .edu-degree { font-size: 0.88rem; font-weight: 500; }
+  .edu-school { font-size: 0.78rem; color: var(--muted); }
+ 
+  .plain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+ 
+  .plain-list li {
+    font-size: 0.82rem;
+    padding-left: 1rem;
+    position: relative;
+    color: #3a3a36;
+  }
+ 
+  .plain-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--faint);
+  }
+ 
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--faint);
+    font-size: 0.72rem;
+    color: var(--faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+ 
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page { padding: 1.5rem; animation: none; }
+    section { animation: none; }
+    .tag { border-color: #ccc; }
+    footer { display: none; }
+  }
+ 
+  @media (max-width: 600px) {
+    .page { padding: 2rem 1.25rem 4rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+ 
+  <header>
+    <h1 class="name">Althea Karyl<br>P. Lengga</h1>
+    <p class="title-tag">UI/UX Designer &amp; Web Developer</p>
+    <div class="contact">
+      <a href="tel:09777815850">09777815850</a>
+      <a href="mailto:althealengga@gmail.com">althealengga@gmail.com</a>
+      <span>Angat, Bulacan</span>
+      <a href="https://behance.net/altheälengga" target="_blank">Behance: Althea Lengga</a>
+    </div>
+  </header>
+ 
+  <section class="summary">
+    <p class="section-label">Summary</p>
+    <p>UI/UX Designer and Web Developer with 3+ years of experience delivering end-to-end design solutions — from research and prototyping in Figma to front-end implementation with HTML, CSS, and ReactJS. Skilled in brand identity, AI-augmented workflows, and translating complex requirements into clean, user-centered interfaces. Recently completed a BS in Information Technology (2025).</p>
+  </section>
+ 
+  <section>
+    <p class="section-label">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-name">Design</div>
+        <div class="tags">
+          <span class="tag">Figma</span>
+          <span class="tag">Adobe Suite</span>
+          <span class="tag">Canva</span>
+          <span class="tag">UI/UX Design</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Brand Identity</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Development</div>
+        <div class="tags">
+          <span class="tag">HTML &amp; CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">ReactJS</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Workflow</div>
+        <div class="tags">
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">Agile</span>
+          <span class="tag">Developer Handoff</span>
+          <span class="tag">Basic Cybersecurity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section>
+    <p class="section-label">Experience</p>
+    <div class="exp-list">
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">IT Support &amp; Graphic Designer</span>
+          <span class="exp-date">2025</span>
+        </div>
+        <div class="exp-company">Municipal Planning and Development Office (MPDO)</div>
+        <ul class="exp-bullets">
+          <li>Provided IT support for staff — maintained systems and resolved hardware/software issues, ensuring uninterrupted daily operations.</li>
+          <li>Designed presentations, reports, and public outreach materials that improved communication effectiveness and visual identity.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">UI/UX Designer &amp; Front-End Developer</span>
+          <span class="exp-date">2025</span>
+        </div>
+        <div class="exp-company">Loris Events — Event Reservation Website</div>
+        <ul class="exp-bullets">
+          <li>Designed and developed a full event reservation system with client base management, centralizing scheduling and CRM into one platform and reducing manual booking overhead.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">Graphic &amp; Product Designer</span>
+          <span class="exp-date">2025</span>
+        </div>
+        <div class="exp-company">National University — Department T-Shirt &amp; Lanyard Design</div>
+        <ul class="exp-bullets">
+          <li>Created department-specific t-shirt and lanyard designs with unique logos for each academic area, providing tangible identity assets for the entire student body.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">Graphic Designer — Booklet &amp; Brochures</span>
+          <span class="exp-date">2025</span>
+        </div>
+        <div class="exp-company">Municipal Environment and Natural Resources Office</div>
+        <ul class="exp-bullets">
+          <li>Produced a waste management booklet using a clean, vibrant visual design to effectively communicate environmental guidelines to the public.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">UI/UX Designer &amp; Front-End Developer</span>
+          <span class="exp-date">2024</span>
+        </div>
+        <div class="exp-company">Cafe 5.5 — Point of Sale System</div>
+        <ul class="exp-bullets">
+          <li>Conceptualized and designed a POS system from scratch, proposing UX enhancements that improved operational efficiency and strengthened the client management flow.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">UI/UX Designer</span>
+          <span class="exp-date">2024</span>
+        </div>
+        <div class="exp-company">LN Diagnostic Center — Website</div>
+        <ul class="exp-bullets">
+          <li>Designed and built an informative website with a streamlined, research-backed architecture optimized for ease of use across all visitor types.</li>
+        </ul>
+      </div>
+ 
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">UI/UX Designer &amp; Graphic Designer</span>
+          <span class="exp-date">2022 – Present</span>
+        </div>
+        <div class="exp-company">Freelance</div>
+        <ul class="exp-bullets">
+          <li>Delivered brand identity, social media design, and UI/UX projects for multiple clients, producing custom visual styles tailored to each client's goals and audience.</li>
+          <li>Managed full design cycles — from brief and concept through to final delivery — across concurrent projects.</li>
+        </ul>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <section>
+    <div class="bottom-grid">
+      <div>
+        <div class="sub-section">
+          <p class="sub-label">Education</p>
+          <div class="edu-item">
+            <div class="edu-degree">BS Information Technology</div>
+            <div class="edu-school">Baliwag Polytechnic College · 2025</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Mobile App &amp; Website Development</div>
+            <div class="edu-school">STI Ortigas Cainta · 2020 (Senior High School)</div>
+          </div>
+        </div>
+        <div class="sub-section">
+          <p class="sub-label">Languages</p>
+          <div style="font-size:0.82rem; color:#3a3a36; line-height:1.9">
+            English — B1 Intermediate<br>
+            Chinese Mandarin — A1 Elementary
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sub-section">
+          <p class="sub-label">Certifications</p>
+          <ul class="plain-list">
+            <li>CISCO Cybersecurity</li>
+            <li>Virtual Assistant Job Training</li>
+            <li>DO NATion Seminar and Workshop</li>
+            <li>Digital Literacy Training</li>
+          </ul>
+        </div>
+        <div class="sub-section">
+          <p class="sub-label">Recognitions</p>
+          <ul class="plain-list">
+            <li>ESport Tournament — MC &amp; Head Committee, Baliwag Bulacan</li>
+            <li>Vice President, Developers of Next Advance Technology Club</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <footer>
+    <span>References available upon request.</span>
+    <span>althealengga@gmail.com</span>
+  </footer>
+ 
+</div>
+</body>
+</html>
+
+                                                                                
+                                                                               Thankyou For Visiting My Cv.
